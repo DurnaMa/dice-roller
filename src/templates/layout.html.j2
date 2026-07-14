@@ -15,6 +15,13 @@
       </div>
     </section>
     <div id="content">{% block content %}{% endblock %}</div>
-    <div id="footer"></div>
+    <div id="footer">
+      {% block footer %}
+        &copy; Copxright 2026 by &nbsp;
+        {% block author %}
+          {{ _author | default("You") }}
+        {% endblock %}
+      {% endblock %}
+    </div>
   </body>
 </html>
