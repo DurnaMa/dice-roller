@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hallo App</title>
+    {% block head %}
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+      <title>{% block title %}{% endblock %}-- Dice-Roller</title>
+    {% endblock head %}
   </head>
   <body>
-    {% if _name %}
-      <p>Hello, {{ _name | capitalize }}!</p>
-    {% else %}
-      <p>Hello, World!</p>
-    {% endif %}
+    <section class="py-12 text-center">
+      <div id="header" class="max-w-3xl mx-auto">
+        <h1 class="text-4xl font-bold">Awesome Dice Roller</h1>
+      </div>
+    </section>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer"></div>
   </body>
 </html>

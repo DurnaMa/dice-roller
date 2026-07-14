@@ -1,6 +1,30 @@
 {
+  "name": "dice-roller",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/DurnaMa/dice-roller#readme",
+  "bugs": {
+    "url": "https://github.com/DurnaMa/dice-roller/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DurnaMa/dice-roller.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css:watch": "npx @tailwindcss/cli -i src/input.css -o src/static/css/main.css --watch",
+    "css:build": "npx @tailwindcss/cli -i src/input.css -o src/static/css/main.css --minify"
+  },
   "devDependencies": {
     "prettier": "^3.9.5",
     "prettier-plugin-jinja-template": "^2.2.0"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.2",
+    "tailwindcss": "^4.3.2"
   }
 }
