@@ -1,7 +1,63 @@
 {% extends "layout.html.j2" %}
-{% block title %}Hello - Home{% endblock %}
+{% block title %}Dices - Home{% endblock %}
 {% block content %}
   <div class="max-w-3xl mx-auto text-center px-4">
-  <p>Look at these beautiful dices</p>
+    {% if _dices %}
+      <p>Look at these beautiful dices</p>
+      <ul>
+        {% for dice in _dices %}
+          <li class="text-lg font-semibold">{{ dice["numberOfSides"] }} sided dice</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No dices available</p>
+    {% endif %}
+
+    <button
+      id="add-dice-btn"
+      type="button"
+      onclick="showNewButtonForm()"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Add Dice
+    </button>
+
+    <form id="add-dice-form" class="hidden max-w-3xl mx-auto text-center px-4 mt-4">
+      <label for="sides-input">Enter the number of sides for the new dice:</label>
+      <input type="number" id="sides-input" name="sides" min="2" required />
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      function showNewButtonForm() {
+        document.getElementById('add-dice-form').style.display = 'block';
+        document.getElementById('add-dice-btn').style.display = 'none';
+      }
+
+      async function addNewDice() {
+        const sides = document.getElementById('sides-input').value;
+        try {
+          const response = await fetch('api/dices', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ numberOfSides: Number(sides) }),
+          });
+
+          if (response.status > 400) {
+            throw new Error('Something went worng');
+          }
+
+          location.reload();
+        } catch (error) {
+          alert(error.message);
+        }
+      }
+
+      document.getElementById("add-dice-form")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+          await addNewDice();
+        });
+    </script>
   </div>
 {% endblock %}
