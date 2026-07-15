@@ -8,19 +8,18 @@
       <title>{% block title %}{% endblock %}-- Dice-Roller</title>
     {% endblock head %}
   </head>
-  <body>
-    <section class="py-12 text-center">
-      <div id="header" class="max-w-3xl mx-auto">
+  <body class="min-h-screen flex flex-col">
+    <header class="felx text-center">
+      <a href="{{ url_for('home') }}">
         <h1 class="text-4xl font-bold">Awesome Dice Roller</h1>
-      </div>
-    </section>
-    <div id="content">{% block content %}{% endblock %}</div>
-    <div id="footer">
+      </a>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center">{% block content %}{% endblock %}</main>
+
+    <div id="footer" class="text-center py-4 text-gray-500">
       {% block footer %}
-        &copy; Copxright 2026 by &nbsp;
-        {% block author %}
-          {{ _author | default("You") }}
-        {% endblock %}
+        &copy; Copyright 2026 by &nbsp; {% block author %}{{ _author | default("You") }}{% endblock %}
       {% endblock %}
     </div>
   </body>

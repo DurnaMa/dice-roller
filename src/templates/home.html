@@ -1,14 +1,8 @@
-{# {% extends "layout.html.j2" %}
+{% extends "layout.html.j2" %}
 {% block title %}Hello - Home{% endblock %}
 {% block content %}
   <div class="max-w-3xl mx-auto text-center px-4">
-    {% if _name %}
-      <p class="text-2xl font-semibold">Hello, {{ _name | capitalize }}!</p>
-    {% else %}
-      <h2 class="text-2xl font-semibold">Hello, World!</h2>
-    {% endif %}
-
-    <h2> Flask Dice-Roller-Exercise</h2>
+    <h2 class="font-bold font-extrabold">Flask Dice-Roller-Exercise</h2>
 
     <p class="mt-4 mb-6 text-gray-600">
       Dice-Roller ist ein einfaches Tool, mit dem du virtuelle Würfel werfen kannst – wähle Anzahl und Art der Würfel
@@ -16,10 +10,10 @@
     </p>
 
     <a
-      href="{{ url_for('dices') }}"
+      href="{{ url_for('handle_dices') }}"
       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-2 rounded-lg"
     >
-      Würfeln
+      Have a look our dice-collection
     </a>
   </div>
-{% endblock %} #}
+{% endblock %}
